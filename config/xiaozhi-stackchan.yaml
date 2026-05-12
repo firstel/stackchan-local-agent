@@ -10,7 +10,7 @@ server:
   http_port: 8003
   # Override with your LAN IP after pairing — the firmware needs to be
   # told a routable URL by OTA. 127.0.0.1 only works for in-container tests.
-  websocket: ws://127.0.0.1:8000/xiaozhi/v1/
+  websocket: ws://192.168.120.183:8000/xiaozhi/v1/
 
 log:
   log_level: INFO
@@ -37,8 +37,8 @@ prompt: |
 VAD:
   SileroVAD:
     type: silero
-    threshold: 0.5
-    threshold_low: 0.3
+    threshold: 0.3
+    threshold_low: 0.1
     model_dir: models/snakers4_silero-vad
     min_silence_duration_ms: 700
 
@@ -47,13 +47,15 @@ ASR:
     type: openai
     base_url: https://api.openai.com/v1/audio/transcriptions
     api_key: ${OPENAI_API_KEY}
-    model_name: gpt-4o-mini-transcribe
+    model_name: whisper-1
     output_dir: tmp/
 
 TTS:
-  EdgeTTS:
-    type: edge
-    voice: en-US-AriaNeural   # swap to en-US-ChristopherNeural / en-GB-RyanNeural for variety
+  OpenAITTS:
+    type: openai
+    api_key: ${OPENAI_API_KEY}
+    model_name: tts-1
+    voice: nova
     output_dir: tmp/
     format: mp3
 
