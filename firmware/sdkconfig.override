@@ -12,4 +12,12 @@
 # container on this Windows host). On boot, the device GETs this URL and
 # the response carries the WebSocket address it should connect to. Our
 # xiaozhi-server returns ws://<LAN_IP>:8000/xiaozhi/v1/ from the same host.
-CONFIG_OTA_URL="http://__LAN_IP__:8003/xiaozhi/ota/"
+CONFIG_OTA_URL="http://192.168.120.183:8003/xiaozhi/ota/"
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_SPEED_80M=y
+CONFIG_SPIRAM_BOOT_INIT=y
+CONFIG_SPIRAM_IGNORE_NOTFOUND=n
+CONFIG_ESP32S3_SPIRAM_SUPPORT=y
+CONFIG_SPIRAM_IGNORE_NOTFOUND=y
+
